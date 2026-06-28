@@ -1,0 +1,36 @@
+{
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "google/gemini-2.5-flash"
+      },
+      "memorySearch": {
+        "enabled": false
+      }
+    }
+  },
+  "models": {
+    "providers": {
+      "google": {
+        "apiKey": {
+          "source": "env",
+          "provider": "default",
+          "id": "GOOGLE_API_KEY"
+        }
+      }
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "botToken": "YOUR_TELEGRAM_BOT_TOKEN_HERE",
+      "dmPolicy": "open",
+      "allowFrom": ["*"],
+      "groupAllowFrom": ["*"]
+    }
+  },
+  "gateway": {
+    "mode": "local",
+    "bind": "lan"
+  }
+}
