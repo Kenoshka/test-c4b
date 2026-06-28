@@ -23,6 +23,7 @@ services:
       - "${OPENCLAW_WORKSPACE_DIR:-./config/workspace}:/home/node/.openclaw/workspace"
       - "${OPENCLAW_AUTH_PROFILE_SECRET_DIR:-./config/auth}:/home/node/.config/openclaw"
       - "./config/SOUL.md:/home/node/.openclaw/workspace/SOUL.md:ro"
+      - openclaw_state:/home/node/.openclaw/state
     cap_drop:
       - NET_RAW
       - NET_ADMIN
@@ -37,9 +38,13 @@ services:
     restart: unless-stopped
     command:
       [
-        "sh",
-        "-c",
-        "node dist/index.js doctor --fix 2>/dev/null; node dist/index.js gateway --bind lan --port 18789",
+        "node",
+        "dist/index.js",
+        "gateway",
+        "--bind",
+        "lan",
+        "--port",
+        "18789",
       ]
     healthcheck:
       test:
@@ -84,9 +89,13 @@ services:
       - "${OPENCLAW_WORKSPACE_DIR:-./config/workspace}:/home/node/.openclaw/workspace"
       - "${OPENCLAW_AUTH_PROFILE_SECRET_DIR:-./config/auth}:/home/node/.config/openclaw"
       - "./config/SOUL.md:/home/node/.openclaw/workspace/SOUL.md:ro"
+      - openclaw_state:/home/node/.openclaw/state
     stdin_open: true
     tty: true
     init: true
     entrypoint: ["node", "dist/index.js"]
     depends_on:
       - openclaw-gateway
+
+volumes:
+  openclaw_state:
