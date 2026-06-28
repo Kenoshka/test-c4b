@@ -22,6 +22,7 @@ services:
       - "${OPENCLAW_CONFIG_DIR:-./config}:/home/node/.openclaw"
       - "${OPENCLAW_WORKSPACE_DIR:-./config/workspace}:/home/node/.openclaw/workspace"
       - "${OPENCLAW_AUTH_PROFILE_SECRET_DIR:-./config/auth}:/home/node/.config/openclaw"
+      - "./config/SOUL.md:/home/node/.openclaw/workspace/SOUL.md:ro"
     cap_drop:
       - NET_RAW
       - NET_ADMIN
@@ -86,6 +87,7 @@ services:
       - "${OPENCLAW_CONFIG_DIR:-./config}:/home/node/.openclaw"
       - "${OPENCLAW_WORKSPACE_DIR:-./config/workspace}:/home/node/.openclaw/workspace"
       - "${OPENCLAW_AUTH_PROFILE_SECRET_DIR:-./config/auth}:/home/node/.config/openclaw"
+      - "./config/SOUL.md:/home/node/.openclaw/workspace/SOUL.md:ro"
     stdin_open: true
     tty: true
     init: true

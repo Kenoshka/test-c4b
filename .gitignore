@@ -12,3 +12,5 @@ config/*.last-good
 config/plugin-skills/
 config/completions/
 config/identity/
+config/update-check.json
+config/workspace-attestations/
