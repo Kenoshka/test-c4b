@@ -1,0 +1,32 @@
+{
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "anthropic/claude-haiku-4-5"
+      },
+      "soul": "/home/node/.openclaw/SOUL.md"
+    }
+  },
+  "models": {
+    "providers": {
+      "anthropic": {
+        "apiKey": {
+          "source": "env",
+          "provider": "default",
+          "id": "ANTHROPIC_API_KEY"
+        }
+      }
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "botToken": "8865527834:AAGLAaNbAH7XHQ46Gr6xVSv0z5P8_OGDL_A",
+      "dmPolicy": "open"
+    }
+  },
+  "gateway": {
+    "mode": "local",
+    "bind": "lan"
+  }
+}
