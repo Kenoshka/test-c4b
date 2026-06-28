@@ -19,11 +19,9 @@ services:
       GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
       TZ: ${OPENCLAW_TZ:-UTC}
     volumes:
-      - "${OPENCLAW_CONFIG_DIR:-./config}:/home/node/.openclaw"
-      - "${OPENCLAW_WORKSPACE_DIR:-./config/workspace}:/home/node/.openclaw/workspace"
-      - "${OPENCLAW_AUTH_PROFILE_SECRET_DIR:-./config/auth}:/home/node/.config/openclaw"
-      - "./config/SOUL.md:/home/node/.openclaw/workspace/SOUL.md:ro"
-      - openclaw_state:/home/node/.openclaw/state
+      - openclaw_home:/home/node/.openclaw
+      - "./config/openclaw.json:/home/node/.openclaw/openclaw.json"
+      - "./config/SOUL.md:/home/node/.openclaw/workspace/SOUL.md"
     cap_drop:
       - NET_RAW
       - NET_ADMIN
@@ -85,11 +83,9 @@ services:
       GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
       TZ: ${OPENCLAW_TZ:-UTC}
     volumes:
-      - "${OPENCLAW_CONFIG_DIR:-./config}:/home/node/.openclaw"
-      - "${OPENCLAW_WORKSPACE_DIR:-./config/workspace}:/home/node/.openclaw/workspace"
-      - "${OPENCLAW_AUTH_PROFILE_SECRET_DIR:-./config/auth}:/home/node/.config/openclaw"
-      - "./config/SOUL.md:/home/node/.openclaw/workspace/SOUL.md:ro"
-      - openclaw_state:/home/node/.openclaw/state
+      - openclaw_home:/home/node/.openclaw
+      - "./config/openclaw.json:/home/node/.openclaw/openclaw.json"
+      - "./config/SOUL.md:/home/node/.openclaw/workspace/SOUL.md"
     stdin_open: true
     tty: true
     init: true
@@ -98,4 +94,4 @@ services:
       - openclaw-gateway
 
 volumes:
-  openclaw_state:
+  openclaw_home:
